@@ -1,5 +1,6 @@
 package _01_Intro_To_Sockets.client;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
@@ -9,9 +10,9 @@ public class ClientGreeter {
    public static void main(String [] args) throws IOException{
 	  //1. Create a String for the ip address of the server. 
 	  // If you don't know how to find a computer's ip address, ask about ipconfig on linux/mac and ipconfig on windows.
-      String ipAdd = "192.168.7.155";
+      String ipAdd = "192.168.7.145";
       //2. Create an integer for the server's port number
-      int portNum = 8080;
+      int portNum = 700;
       
       try {
       //3. Surround steps 4-9 in a try-catch block that catches any IOExceptions.
@@ -23,11 +24,11 @@ public class ClientGreeter {
          //6. Use the DataOutputStream object to send a message to the server using the writeUTF(String message) method
          dosOutput.writeUTF("Hello");
          //7. Create a DataInputStream object. When initializing it, use the Server object you created in step 4 to call the getInputStream() method.
-         DataOutputStream dosInput = new DataOutputStream(socket.getInputStream());
+         DataInputStream disInput = new DataInputStream(socket.getInputStream());
          //8. Use the DataInputStream object to print a message from the server using the readUTF() method.
-         
+         System.out.println(disInput.readUTF());
          //9. Close the client's server object
-
+         socket.close();
       } catch(Exception e) {
     	  
       }
