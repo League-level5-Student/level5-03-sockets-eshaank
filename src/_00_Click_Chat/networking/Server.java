@@ -62,10 +62,10 @@ public class Server {
 		return port;
 	}
 
-	public void sendClick() {
+	public void sendClick(String message) {
 		try {
 			if (os != null) {
-				os.writeObject("CLICK SENT FROM SERVER");
+				os.writeObject(message);
 				os.flush();
 			}
 		} catch (IOException e) {

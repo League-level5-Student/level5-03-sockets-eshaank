@@ -49,10 +49,10 @@ public class Client {
 		}
 	}
 	
-	public void sendClick() {
+	public void sendClick(String message) {
 		try {
 			if (os != null) {
-				os.writeObject("CLICK SENT FROM CLIENT");
+				os.writeObject(message);
 				os.flush();
 			}
 		} catch (IOException e) {
